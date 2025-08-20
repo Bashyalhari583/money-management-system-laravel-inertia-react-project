@@ -1,5 +1,6 @@
 import '../css/app.css';
-
+import { route } from 'ziggy-js';
+import { Ziggy } from './ziggy';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
@@ -13,12 +14,19 @@ createInertiaApp({
     setup({ el, App, props }) {
         const root = createRoot(el);
 
-        root.render(<App {...props} />);
+        const AppWithLink = () => (
+            <>
+                <a href={route('relations.index', {}, false, Ziggy as any)}>Relations</a>
+                <App {...props} />
+            </>
+        );
+
+        root.render(<AppWithLink />);
     },
     progress: {
         color: '#4B5563',
     },
 });
 
-// This will set light / dark mode on load...
+// Set light/dark mode
 initializeTheme();
