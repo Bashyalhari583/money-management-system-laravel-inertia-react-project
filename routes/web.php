@@ -25,7 +25,7 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     //dashboard
     Route::get('dashboard', [DashboardController::class, 'index'])
-        ->name('dashboard.index');
+        ->name('dashboard');
     //relations
     Route::get('relations', [RelationController::class, 'index'])
         ->name('relations.index');
@@ -42,5 +42,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('transactions', [TransactionController::class, 'store'])
         ->name('transactions.store');
 });
+
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';

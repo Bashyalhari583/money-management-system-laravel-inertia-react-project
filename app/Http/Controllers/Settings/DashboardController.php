@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Services\TransactionService;
+
 class DashboardController extends Controller
 {
     public function __construct(private TransactionService $tx) {}
@@ -18,7 +19,7 @@ class DashboardController extends Controller
             'to'   => now()->endOfMonth()->toDateString(),
         ]);
 
-        return Inertia::render('Dashboard/Index', [
+        return Inertia::render('dashboard', [
             'totals' => $totals,
         ]);
     }

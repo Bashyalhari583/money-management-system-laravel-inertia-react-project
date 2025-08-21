@@ -15,12 +15,12 @@ class RelationController extends Controller
     public function index(Request $request)
     {
         $list = $this->srv->list($request->user()->id);
-        return Inertia::render('Relations/Index', ['relations'=>$list]);
+        return Inertia::render('settings/relations', ['relations' => $list]);
     }
 
     public function search(Request $request)
     {
-        $q = $request->query('q','');
+        $q = $request->query('q', '');
         return response()->json($this->srv->search($q, $request->user()->id));
     }
 
@@ -31,13 +31,13 @@ class RelationController extends Controller
             'relation_type' => 'required|in:brother,sister,mother,father,spouse,other'
         ]);
         $rel = $this->srv->send($request->user()->id, $data['relative_id'], $data['relation_type']);
-        return back()->with('success','Request sent');
+        return back()->with('success', 'Request sent');
     }
 
     public function respond(Request $request, int $id)
     {
-        $request->validate(['status'=>'required|in:accepted,rejected']);
+        $request->validate(['status' => 'required|in:accepted,rejected']);
         $this->srv->respond($id, $request->status);
-        return back()->with('success','Updated');
+        return back()->with('success', 'Updated');
     }
 }

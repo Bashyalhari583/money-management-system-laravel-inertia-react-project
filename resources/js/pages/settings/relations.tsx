@@ -20,6 +20,7 @@ type Props = {
   relations: Relation[];
 };
 
+
 export default function Relations({ relations }: Props) {
   const [results, setResults] = useState<RelationUser[]>([]);
   const { data, setData, post, processing, reset } = useForm<{

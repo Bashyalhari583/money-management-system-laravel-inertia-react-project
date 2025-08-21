@@ -19,8 +19,8 @@ class UserSeeder extends Seeder
         DB::table('users')->insert(
             [
                 [
-                    'name' => Str::random(10). ' Hari',
-                    'email' => Str::random(10) . 'hbashyal878@gmail.com',
+                    'name' => ' Hari',
+                    'email' => 'hbashyal878@gmail.com',
                     'email_verified_at' => now(),
                     'password' => Hash::make('domain'),
                     'remember_token' => Str::random(10),
@@ -28,8 +28,8 @@ class UserSeeder extends Seeder
                     'updated_at' => now(),
                 ],
                 [
-                    'name' => Str::random(10). ' Domain',
-                    'email' => Str::random(10) . 'domain@gmail.com',
+                    'name' =>  ' Domain',
+                    'email' =>  'domain@gmail.com',
                     'email_verified_at' => now(),
                     'password' => Hash::make('domain'),
                     'remember_token' => Str::random(10),

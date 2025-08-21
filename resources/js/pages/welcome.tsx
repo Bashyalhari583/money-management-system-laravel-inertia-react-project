@@ -1,5 +1,7 @@
 import { type SharedData } from '@/types';
 import { Head, Link, usePage } from '@inertiajs/react'; 
+import { route } from 'ziggy-js';
+import React from 'react';
 
 export default function Welcome() {
     const { auth } = usePage<SharedData>().props;
@@ -14,6 +16,7 @@ export default function Welcome() {
       <nav className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         <div className="font-bold text-xl">Money Manager</div>
         <div className="space-x-4">
+          
           <Link href={route('login')} className="text-sm">Login</Link>
           <Link href={route('register')} className="text-sm bg-black text-white px-3 py-1.5 rounded-lg">Get Started</Link>
         </div>
